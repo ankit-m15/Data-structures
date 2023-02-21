@@ -12,7 +12,7 @@ class disjointSet{
                 parent[i]=i;
             }
         }
-        findParent(int node){
+        int findParent(int node){
             if(node==parent[node]){
                 return node;
             }
