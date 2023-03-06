@@ -34,7 +34,7 @@ int maximumNonAdjacentSum1(vector<int> &nums){
 // TC-O(n) SC-O(1)  optimal
 int maximumNonAdjacentSum2(vector<int> &nums){
     int n=nums.size();
-    int prev=nums[0],prev2=-1,ans;
+    int prev=nums[0],prev2=-1,ans=nums[0];
     for(int i=1; i<n; i++){
         int take=nums[i];
         if(i>1)take+=prev2;
@@ -53,8 +53,8 @@ int main()
     for(int i=0; i<n; i++){
         cin>>nums[i];
     }
-    // cout<< maximumNonAdjacentSum(nums)<<endl;
-    // cout<< maximumNonAdjacentSum1(nums)<<endl;
+    cout<< maximumNonAdjacentSum(nums)<<endl;
+    cout<< maximumNonAdjacentSum1(nums)<<endl;
     cout<< maximumNonAdjacentSum2(nums)<<endl;
     
     return 0;
