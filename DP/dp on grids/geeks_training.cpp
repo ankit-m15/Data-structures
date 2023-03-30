@@ -23,12 +23,12 @@ int maxp(int day, int last, vector<vector<int>> &points){
     return maxi;
 }
 int maximumPoints(vector<vector<int>> &points, int n){
-    return fun(n - 1, -1, points);
+    return maxp(n - 1, -1, points);
 }
 
 
 // memoized soln -- this will take stack space
-int fun(int day, int last, vector<vector<int>> &points, vector<vector<int>> &dp){
+int maxp(int day, int last, vector<vector<int>> &points, vector<vector<int>> &dp){
     if (dp[day][last] != -1)
         return dp[day][last];
     if (day == 0){
@@ -45,14 +45,14 @@ int fun(int day, int last, vector<vector<int>> &points, vector<vector<int>> &dp)
     int maxi = INT_MIN;
     for (int i = 0; i < 3; i++){
         if (i != last){
-            maxi = max(maxi, points[day][i] + fun(day - 1, i, points, dp));
+            maxi = max(maxi, points[day][i] + maxp(day - 1, i, points, dp));
         }
     }
     return dp[day][last] = maxi;
 }
 int maximumPoints(vector<vector<int>> &points, int n){
     vector<vector<int>> dp(n, vector<int>(4, -1));
-    return fun(n - 1, 3, points, dp);
+    return maxp(n - 1, 3, points, dp);
 }
 
 
